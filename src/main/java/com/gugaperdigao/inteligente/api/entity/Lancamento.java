@@ -24,13 +24,17 @@ import javax.persistence.TemporalType;
 
 import com.gugaperdigao.inteligente.api.enums.TipoEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Builder
 @Table(name = "lancamento", schema="public")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lancamento {
 	
 	@Id

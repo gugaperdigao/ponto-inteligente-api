@@ -22,13 +22,18 @@ import javax.persistence.Table;
 
 import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Builder
+
 @Table(name = "funcionario", schema="public")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Funcionario {
 	
 	@Id
@@ -91,5 +96,7 @@ public class Funcionario {
 		dataAtualizacao = atual;
 		
 	}
+	
+	
 
 }

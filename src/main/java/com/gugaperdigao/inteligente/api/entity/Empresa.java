@@ -1,6 +1,7 @@
 package com.gugaperdigao.inteligente.api.entity;
 
 import java.util.Date;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -16,13 +17,19 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Builder
 @Table(name="empresa", schema = "public")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Empresa {
 	
 	@Id
