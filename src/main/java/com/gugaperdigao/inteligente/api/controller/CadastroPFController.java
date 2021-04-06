@@ -133,9 +133,13 @@ public class CadastroPFController {
 		cadastroPFDto.setEmail(funcionario.getEmail());
 		cadastroPFDto.setCpf(funcionario.getCpf());
 		cadastroPFDto.setCnpj(funcionario.getEmpresa().getCnpj());
-		cadastroPFDto.setQtdHorasTrabalhoDia(Optional.of(Float.toString(funcionario.getQtdHorasTrabalhoDia())));
-		cadastroPFDto.setValorHora(Optional.of(funcionario.getValorHora().toString()));
-		cadastroPFDto.setQtdHorasAlmoco(Optional.of(Float.toString(funcionario.getQtdHorasAlmoco())));
+		
+		if(funcionario.getQtdHorasTrabalhoDia()!=null)
+			cadastroPFDto.setQtdHorasTrabalhoDia(Optional.of(Float.toString(funcionario.getQtdHorasTrabalhoDia())));
+		if(funcionario.getValorHora()!=null)
+			cadastroPFDto.setValorHora(Optional.of(funcionario.getValorHora().toString()));
+		if(funcionario.getQtdHorasAlmoco()!=null)
+			cadastroPFDto.setQtdHorasAlmoco(Optional.of(Float.toString(funcionario.getQtdHorasAlmoco())));
 		return cadastroPFDto;
 	}
 

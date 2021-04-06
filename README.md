@@ -2,8 +2,11 @@
 
 # Ponto Inteligente
 
-Projeto criado com Spring Boot e Java 8
-Banco de dados POSTGRESQL com JPA e Spring Data JPA
-Autenticação e autorização com Spring Security e tokens JWT (JSON Web Token)
-Testes unitários e de integração com JUnit e Mockito
-Integração contínua com TravisCI
+API do sistema de ponto inteligente com Java e Spring Boot.
+### Detalhes da API RESTful
+
+* Projeto criado com Spring Boot e Java 8
+* Banco de dados POSTGRESQL com JPA e Spring Data JPA
+* Autenticação e autorização com Spring Security e tokens JWT (JSON Web Token)
+* Testes unitários e de integração com JUnit e Mockito
+* Integração contínua com TravisCI
