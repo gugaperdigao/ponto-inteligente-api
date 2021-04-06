@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
@@ -34,7 +35,8 @@ public class Empresa {
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "empresa_sequence")
+	@SequenceGenerator(name="empresa_sequence", sequenceName = "seq_empresa" ,allocationSize = 1)
 	private Long id;
 	
 	
@@ -66,5 +68,7 @@ public class Empresa {
 		dataAtualizacao = atual;
 		
 	}
+	
+	
 
 }

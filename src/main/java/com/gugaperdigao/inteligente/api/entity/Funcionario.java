@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
@@ -38,7 +39,8 @@ public class Funcionario {
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "funcionario_sequence")
+	@SequenceGenerator(name="funcionario_sequence", sequenceName = "seq_funcionario" , allocationSize = 1)
 	private Long id;
 	
 	@Column(name="nome" ,nullable=false)
