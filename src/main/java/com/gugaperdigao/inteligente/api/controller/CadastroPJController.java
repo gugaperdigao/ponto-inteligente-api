@@ -23,7 +23,7 @@ import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
 import com.gugaperdigao.inteligente.api.response.Response;
 import com.gugaperdigao.inteligente.api.service.EmpresaService;
 import com.gugaperdigao.inteligente.api.service.FuncionarioService;
-import com.gugaperdigao.inteligente.api.utils.RSAencrypt;
+import com.gugaperdigao.inteligente.api.utils.PasswordUtils;
 
 
 
@@ -121,7 +121,7 @@ public class CadastroPJController {
 		funcionario.setEmail(cadastroPJDto.getEmail());
 		funcionario.setCpf(cadastroPJDto.getCpf());
 		funcionario.setPerfil(PerfilEnum.ROLE_ADMIN);
-		funcionario.setSenha(RSAencrypt.encrypt(cadastroPJDto.getSenha()));
+		funcionario.setSenha(PasswordUtils.gerarBCrypt(cadastroPJDto.getSenha()));
 
 		return funcionario;
 	}

@@ -4,10 +4,10 @@ package com.gugaperdigao.inteligente.api.repository;
 
 
 import java.math.BigDecimal;
+import java.security.NoSuchAlgorithmException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.gugaperdigao.inteligente.api.entity.Empresa;
 import com.gugaperdigao.inteligente.api.entity.Funcionario;
 import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
-import com.gugaperdigao.inteligente.api.utils.RSAencrypt;
+import com.gugaperdigao.inteligente.api.utils.PasswordUtils;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -87,10 +87,10 @@ public class FuncionarioRepositoryTest {
 		return empresa;
 	}
 	
-	private Funcionario obterDadosFuncionario(Empresa empresa) {
+	private Funcionario obterDadosFuncionario(Empresa empresa) throws NoSuchAlgorithmException  {
 		
 		Funcionario funcionario = Funcionario.builder().nome("Fulano de Tal").perfil(PerfilEnum.ROLE_USUARIO)
-				.senha(RSAencrypt.encrypt("1234")).cpf(CPF).email(EMAIL).empresa(empresa)
+				.senha(PasswordUtils.gerarBCrypt("1234")).cpf(CPF).email(EMAIL).empresa(empresa)
 				.qtdHorasAlmoco(Float.valueOf("2.0")).qtdHorasTrabalhoDia(Float.valueOf("8.0"))
 				.valorHora(new BigDecimal("70.0")).build();
 		return funcionario;

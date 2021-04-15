@@ -25,7 +25,7 @@ import com.gugaperdigao.inteligente.api.enums.PerfilEnum;
 import com.gugaperdigao.inteligente.api.response.Response;
 import com.gugaperdigao.inteligente.api.service.EmpresaService;
 import com.gugaperdigao.inteligente.api.service.FuncionarioService;
-import com.gugaperdigao.inteligente.api.utils.RSAencrypt;
+import com.gugaperdigao.inteligente.api.utils.PasswordUtils;
 
 
 @RestController
@@ -109,7 +109,7 @@ public class CadastroPFController {
 		funcionario.setEmail(cadastroPFDto.getEmail());
 		funcionario.setCpf(cadastroPFDto.getCpf());
 		funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
-		funcionario.setSenha(RSAencrypt.encrypt(cadastroPFDto.getSenha()));
+		funcionario.setSenha(PasswordUtils.gerarBCrypt(cadastroPFDto.getSenha()));
 		cadastroPFDto.getQtdHorasAlmoco()
 				.ifPresent(qtdHorasAlmoco -> funcionario.setQtdHorasAlmoco(Float.valueOf(qtdHorasAlmoco)));
 		cadastroPFDto.getQtdHorasTrabalhoDia()
