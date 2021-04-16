@@ -31,36 +31,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
-	    authManagerBuilder
-	            .userDetailsService(userDetailsService)
-	            .passwordEncoder(passwordEncoder());
+		authManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/**", "/api/cadastrar-pj", "/api/cadastrar-pf", "/v2/api-docs",
-						"/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**")
+				.antMatchers("/auth/**", "/api/cadastrar-pj", "/api/cadastrar-pf", "/v2/api-docs", "/v2/api-docs",
+						"/configuration/security", "/swagger*/**", "/webjars/**")
 				.permitAll().anyRequest().authenticated();
 		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 		httpSecurity.headers().cacheControl();
 	}
-	
+
 	@Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-	
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+
 	@Override
 	@Bean
 	public UserDetailsService userDetailsService() {
-	    return super.userDetailsService();
+		return super.userDetailsService();
 	}
-	
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
